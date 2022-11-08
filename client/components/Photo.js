@@ -34,6 +34,7 @@ const Photo = React.createClass({
                 {comments[post.code] ? comments[post.code].length : 0}
               </span>
             </Link>
+            {/* <button onClick={methodDoesNotExist}>Break the world</button> */}
           </div>
         </figcaption>
       </figure>
