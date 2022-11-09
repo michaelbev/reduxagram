@@ -13,9 +13,6 @@ Raven.config(sentry_url, {
 }).install()
 
 function clickedDeath() {
-  Raven.captureMessage('User clicked Death')
-  // Raven.showReportDialog()
-  // throw new Error('Death button clicked! Error thrown!')
   logException(new Error('Death button clicked! Error thrown!'), {
     email: 'meb@gmail.com',
   })
