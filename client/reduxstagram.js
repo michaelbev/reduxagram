@@ -21,7 +21,7 @@ import { sentry_url, logException } from './data/config'
 
 Raven.config(sentry_url, {
   tags: {
-    git_commit: 'asdasd',
+    app: 'reduxagram',
     userLevel: 'editor',
   },
 }).install()

@@ -4,6 +4,7 @@ export const sentry_url =
   'https://4669361226224bd1b083b71e62b6800f@o4504121466880000.ingest.sentry.io/4504121617285120'
 
 export function logException(ex, context) {
+  Raven.showReportDialog()
   Raven.captureException(ex, {
     extra: context,
   })

@@ -7,14 +7,14 @@ import { sentry_url, logException } from '../data/config'
 
 Raven.config(sentry_url, {
   tags: {
-    git_commit: 'asdasd',
+    app: 'reduxagram',
     userLevel: 'editor',
   },
 }).install()
 
-function somethingBadHappened() {
-  Raven.captureMessage('Something bad happened')
-  Raven.showReportDialog()
+function clickedDeath() {
+  Raven.captureMessage('User clicked Death')
+  // Raven.showReportDialog()
   // throw new Error('Death button clicked! Error thrown!')
   logException(new Error('Death button clicked! Error thrown!'), {
     email: 'meb@gmail.com',
@@ -55,7 +55,7 @@ const Photo = React.createClass({
             </Link>
             <button
               onClick={() => {
-                somethingBadHappened()
+                clickedDeath()
               }}
             >
               💀
