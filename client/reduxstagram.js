@@ -19,8 +19,12 @@ import store, { history } from './MyStore'
 import Raven from 'raven-js'
 import { sentry_url, logException } from './data/config'
 
-// Raven.config(sentry_url).install()
-Raven.config(sentry_url).install()
+Raven.config(sentry_url, {
+  tags: {
+    git_commit: 'asdasd',
+    userLevel: 'editor',
+  },
+}).install()
 
 const router = (
   <Provider store={store}>

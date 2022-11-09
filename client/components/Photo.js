@@ -2,6 +2,25 @@ import React from 'react'
 import { Link } from 'react-router'
 import CSSTransitionGroup from 'react-addons-css-transition-group'
 
+import Raven from 'raven-js'
+import { sentry_url, logException } from '../data/config'
+
+Raven.config(sentry_url, {
+  tags: {
+    git_commit: 'asdasd',
+    userLevel: 'editor',
+  },
+}).install()
+
+function somethingBadHappened() {
+  Raven.captureMessage('Something bad happened')
+  Raven.showReportDialog()
+  // throw new Error('Death button clicked! Error thrown!')
+  logException(new Error('Death button clicked! Error thrown!'), {
+    email: 'meb@gmail.com',
+  })
+}
+
 const Photo = React.createClass({
   render() {
     const { post, i, comments } = this.props
@@ -34,7 +53,13 @@ const Photo = React.createClass({
                 {comments[post.code] ? comments[post.code].length : 0}
               </span>
             </Link>
-            {/* <button onClick={methodDoesNotExist}>Break the world</button> */}
+            <button
+              onClick={() => {
+                somethingBadHappened()
+              }}
+            >
+              💀
+            </button>
           </div>
         </figcaption>
       </figure>
