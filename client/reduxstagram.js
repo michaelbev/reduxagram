@@ -1,7 +1,5 @@
 // let's go!
 import React from 'react'
-// import * as Sentry from '@sentry/react'
-// import { BrowserTracing } from '@sentry/tracing'
 import { render } from 'react-dom'
 
 import App from './components/App'
