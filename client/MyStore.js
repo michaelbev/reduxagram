@@ -15,9 +15,11 @@ const defaultState = {
   comments,
 }
 
-const store = createStore(rootReducer, defaultState)
-
-export const history = syncHistoryWithStore(browserHistory, store)
+const store = createStore(
+  rootReducer,
+  defaultState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+)
 
 if (module.hot) {
   module.hot.accept('./reducers/', () => {
@@ -26,4 +28,5 @@ if (module.hot) {
   })
 }
 
+export const history = syncHistoryWithStore(browserHistory, store)
 export default store
